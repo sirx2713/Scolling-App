@@ -49,10 +49,10 @@ class _CarouselExampleState extends State<CarouselExample> {
       children: <Widget>[
         ConstrainedBox(
           constraints: BoxConstraints(maxHeight: height / 2),
-          child: CarouselView.weighted(
+          child: CarouselView(
+            itemExtent: 1,
             controller: controller,
             itemSnapping: true,
-            flexWeights: const <int>[1, 7, 1],
             children: ImageInfo.values.map((ImageInfo image) {
               return HeroLayoutCard(imageInfo: image);
             }).toList(),
@@ -65,9 +65,8 @@ class _CarouselExampleState extends State<CarouselExample> {
         ),
         ConstrainedBox(
           constraints: const BoxConstraints(maxHeight: 50),
-          child: CarouselView.weighted(
-            flexWeights: const <int>[1, 2, 3, 2, 1],
-            consumeMaxWeight: false,
+          child: CarouselView(
+            itemExtent: 1,
             children: List<Widget>.generate(20, (int index) {
               return ColoredBox(
                 color: Colors.primaries[index % Colors.primaries.length]
@@ -80,9 +79,8 @@ class _CarouselExampleState extends State<CarouselExample> {
         const SizedBox(height: 20),
         ConstrainedBox(
           constraints: const BoxConstraints(maxHeight: 200),
-          child: CarouselView.weighted(
-              flexWeights: const <int>[3, 3, 3, 2, 1],
-              consumeMaxWeight: false,
+          child: CarouselView(
+              itemExtent: 1,
               children: CardInfo.values.map((CardInfo info) {
                 return ColoredBox(
                   color: info.backgroundColor,
